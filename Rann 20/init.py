@@ -33,8 +33,7 @@ def sponsors():
 def Home():
 	try:
 		if session['logged_in']:
-			return render_template("main.html")
-			# return redirect("/user/home")
+			return redirect("/user/home")
 		else:
 			return render_template("main.html")
 	except:
@@ -206,6 +205,7 @@ def check_part():
 @app.route("/user/<string:path>",methods=["GET","POST"])
 def User_Profile(path):
 	try:
+		return render_template('main.html')
 		if session["logged_in"]:
 			client_email=session["username"]
 			client_data=Competitors.query.filter_by(email=client_email).first()
