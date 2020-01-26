@@ -1170,7 +1170,7 @@ def Signup():
 			# branch=request.form["branch"]
 			# aadhar_no=request.form["aadhar_no"]
 			contact_no=str(request.form["contact_no"])
-			# gender=request.form["gender"]
+			gender=request.form["gender"]
 			otp=randint(100000,999999)
 			new_user=TempCompetitors(email=uname,passwd=passwd,name=name,roll_no=roll_no,college=institute,mob_no=contact_no,otp=otp)
 			db.session.add(new_user)

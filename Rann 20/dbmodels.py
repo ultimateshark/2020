@@ -23,7 +23,7 @@ class TempCompetitors(db.Model):
 	college=db.Column(db.String(200),nullable=False)
 	# branch=db.Column(db.String(50),nullable=False)
 	# year=db.Column(db.Integer,nullable=False)
-	# gender=db.Column(db.String(1),nullable=False)
+	gender=db.Column(db.String(1),nullable=False)
 	mob_no=db.Column(db.String(13),nullable=False)
 	otp=db.Column(db.String(7),unique=True)
 
@@ -39,7 +39,7 @@ class Competitors(db.Model):
 	college=db.Column(db.String(200),nullable=False)
 	# branch=db.Column(db.String(50),nullable=False)
 	# year=db.Column(db.Integer,nullable=False)
-	# gender=db.Column(db.String(1),nullable=False)
+	gender=db.Column(db.String(1),nullable=False)
 	mob_no=db.Column(db.String(13),nullable=False)
 
 class Members(db.Model):
