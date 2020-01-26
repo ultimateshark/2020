@@ -1,0 +1,51 @@
+@font-face{
+	font-family:'SF';
+	/*src:url('{{url_for('static',filename='fonts/SF-Regular.ttf')}}') format('truetype');*/
+	src:url('../fonts/SF.ttf') format('truetype');
+}
+
+@font-face{
+	font-family:'TBF';
+	src:url('../fonts/theboldfont.ttf') format('truetype');
+}
+
+@font-face{
+	font-family:'JS-Bold';
+	src:url('../fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+
+@font-face{
+	font-family:'Gilroy-B';
+	src:url('../fonts/Gilroy-ExtraBold.otf') format('opentype');
+}
+
+@font-face{
+	font-family:'FSM-R';
+	src:url('../fonts/FSM-Regular.otf') format('opentype');
+}
+
+@font-face{
+	font-family:'FSM-B';
+	src:url('../fonts/FSM-Bold.otf') format('opentype');
+}
+
+@font-face{
+	font-family:'FSM-M';
+	src:url('../fonts/FSM-Medium.otf') format('opentype');
+}
+
+
+@font-face{
+	font-family:'Agus-R';
+	src:url('../fonts/Agus-R.otf') format('opentype');
+}
+
+@font-face{
+	font-family:'Etna';
+	src:url('../fonts/Etna.otf') format('opentype');
+}
+
+
+*{
+	font-family:'FSM-R';
+}

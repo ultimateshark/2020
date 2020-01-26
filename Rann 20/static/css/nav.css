@@ -1,0 +1,58 @@
+body{
+	margin:0;
+}
+
+nav{
+	/*border:1px solid #000;*/
+	display: flex;
+	flex-direction: row;
+	justify-content:space-between;
+	padding:30px 100px 10px 100px;
+	height:45px;
+}
+
+.reg_btn{
+	background:#fff;
+	font-size:1em;
+	font-family: 'FSM-B';
+	padding:10px 25px 10px 25px; 
+	border:0;
+	box-shadow:9px 9px 1px 4px;
+}
+
+.reg_btn:hover{
+	cursor: pointer;
+	box-shadow:1px 1px 1px 4px;
+	transform: scale(1.1);
+	transition:0.3s;
+
+}
+
+.nav_border{
+	box-shadow:1px 1px 4px 2px rgba(0,0,0,0.3);
+	border:none;
+	padding:8px 100px 10px 100px;
+}
+
+.reg_btn_border{
+	box-shadow: none;
+	border:2px solid #000;
+}
+
+.reg_btn_border:hover{
+}
+
+
+.logo_img{
+	height: 60px;
+}
+
+.logo_img_home{
+	height:120px;
+}
+
+@media screen and (max-width:400px){
+	nav{
+		padding:10px 50px 10px 10px;
+	}
+}

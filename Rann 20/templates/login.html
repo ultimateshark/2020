@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login - RANN'20 || Intercollege sports event || KIET </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/login.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+	<link rel="stylesheet" href="../static/css/simple-grid.css">
+</head>
+<body>
+
+
+<div class="wrap">
+		<div class="left_area">
+				<div class="logo">
+					 RANN '20
+				</div>
+
+				<blockquote class="quote">
+					Never Say Never <br>
+					Because<br>
+					Limits,like Fears<br>
+					Are Often Just<br>
+					Illusions.
+				</blockquote>
+
+				<div class="dont_have_acc">
+					Don't Have an Account?<br>
+					<a href="/signuppage">CREATE NEW ACCOUNT</a>
+				</div>
+		</div>
+
+		<div class="input_area">
+			
+					<div class="col-12 wel_txt">
+						Welcome,<br>
+						<font style="color:#2575fc;font-family:'FSM-B';">LOGIN</font> to continue
+					</div>
+				
+				<br><br>
+			
+				<form action="/login/{{redir}}" method="POST">
+					<input type="email" placeholder="EMAIL ADDRESS"  name="uname" required> <br>
+					<input type="password" placeholder="PASSWORD" name="passwd" required> <br><br>
+					<!-- <a href="/forgot-password-page">Forgot Password?</a>  <br><br> -->
+					<button class="login_btn">LOGIN</button>
+					
+				</form>
+		</div>
+</div>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+	{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+
+</body>
+</html>

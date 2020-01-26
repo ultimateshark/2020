@@ -1,0 +1,152 @@
+
+
+.card{
+  height:150px;
+  perspective:700px;
+  margin-left:30px;
+  margin-top:20px;
+
+}
+
+
+.image{
+  height: inherit;
+  transform-style: preserve-3d;
+  //transform: rotateX(30deg) rotateY(30deg); 
+}
+
+.image.cricket{
+  background: url('../img/events/cricket.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.football{
+  background: url('../img/events/football.jpeg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+
+.image.badminton{
+  background: url('../img/events/badminton.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.basket{
+  background: url('../img/events/basket.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+
+.image.tt{
+  background: url('../img/events/tt.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.volley{
+  background: url('../img/events/volley.png') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.tennis{
+  background: url('../img/events/tennis.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.carrom{
+  background: url('../img/events/carrom.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.pool{
+  background: url('../img/events/pool.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+/*.image.tennis{
+  background: url('../img/events/football.jpeg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}*/
+
+.image.yoga{
+  background: url('../img/events/yoga.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.karate{
+  background: url('../img/events/karate.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.athletics{
+  background: url('../img/events/athletics.png') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.chess{
+  background: url('../img/events/chess.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.og{
+  background: url('../img/events/og.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.pubg{
+  background: url('../img/events/pubg.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+.image.fifa{
+  background: url('../img/events/fifa.jpg') no-repeat;
+  background-size:cover;
+  background-position:center; 
+  border-radius:10px;
+}
+
+
+.image.second{
+  background-image: url("https://c2.staticflickr.com/2/1506/25121644830_2d768ef51a_n.jpg");
+}
+
+
+
+
+@media screen and (max-width:600px) {
+
+  .card{
+    margin-left:10px;
+  }
+}

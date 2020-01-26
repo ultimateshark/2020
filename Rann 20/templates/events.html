@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rann'20 | Intercollege Sports Events - KIET</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/event_det.css">
+	<link rel="stylesheet" href="../static/css/nav.css">
+	<link rel="stylesheet" href="../static/css/card.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+
+<style>
+	.sport_det{
+		background: url('../static/img/event_det/cricket.jpg') no-repeat fixed; 
+		background-position:center; 
+		background-size:cover;
+	}
+</style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+</head>
+<body>
+
+<nav class="nav_border">
+	<div class="logo">
+		<img src="../static/img/logo.png" class="logo_img" alt="rann_logo"/>
+	</div>
+
+	<div class="nav_right">
+		<!-- <div></div>
+		<div></div>
+		<div></div> -->
+		<a href="/loginpage/direct" >
+			<button class="reg_btn reg_btn_border">REGISTER</button>
+		</a>
+	</div>
+</nav>
+
+<div class="sport_det_rule">
+	<div class="sport_det">
+		<div class="overlay">
+			<div class="det_wrap">
+
+				<div class="sport_name">{{event.name.upper()}}</div>
+
+				<!-- categories loop starts ( men , women , team)-->
+				<div class="categories">Men</div>
+				<!-- categories loop ends -->
+
+				<div class="pricing">
+					<div class="price_txt">Fees</div>
+					{% for i in event.amount.split("-") %}
+					<div class="price">{{i}}</div>  
+					{% endfor %}
+					<div class="acc">Accomodation</div>
+					<div class="acc_val">200 <span>per Day</span></div>
+				</div>
+				<div class="coord">
+					<div class="price_txt">Coordinator</div>
+					<!-- cordinator name starts -->
+					<div class="coord_det">
+						<div class="coord_name">{{event.stu_co}}</div>
+						<div class="coord_num">{{event.stu_co_contact.split("-")[0]}}</div>
+					</div>
+					<!-- cordinator name ends -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="rule">
+		<div class="rule_btn_wrap">
+			<div class="heading">RULES</div>
+			<a href="#">
+				<button onclick="swal('Registrations opening soon')" class="game_reg_btn">Register</button>
+			</a>
+		</div>	
+
+		<div class="min_max"> 
+			<!-- category wise min max starts -->
+			<span style="font-family: 'FSM-B';">Men: </span> 
+			Min: {{event.min_participants}} and Max: {{event.max_participants}}
+			<!-- category wise min max ends -->
+		</div>
+
+
+		<ul class="rule_list">
+			<!-- rules loop starts -->
+			{% if event.name=="Pubg" or event.name=="Fifa" %}
+    {% else %}
+    <li style="color: #d34848">It is Mandatory To Bring Your College ID and one Government ID!!!</li>
+    <li style="color: #d34848">It is Mandatory To Bring NOC From Your College!!!</li>
+    {% endif %}
+		<!-- <li>{{event.rules}}</li> -->
+    {% for i in event.rules.split("-") %}
+    <li>{{i}}</li>
+    {% endfor %}
+			<!-- rules loop ends -->
+		</ul>
+
+		
+
+	</div>
+</div>
+
+</body>
+</html>

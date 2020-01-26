@@ -1,0 +1,196 @@
+body{
+	margin:0;
+}
+
+
+
+
+.wrap{
+	display: flex;
+	flex-direction: row;
+}
+
+
+.left_area{
+	flex:3;
+	/*background:url('../img/login_cover.jpg');*/
+	background: linear-gradient(135deg, #6a11cb 10%, #2575fc 90%);
+	height: 100vh;
+}
+
+
+
+.logo{
+	font-weight: 700;
+	font-size: 2em;
+	padding-left:30px;
+	padding-top:20px;
+	line-height: 30px;
+	color:#fff;
+}
+
+.dont_have_acc{
+	position: absolute;
+	bottom:5%;
+	font-size:1.1em;
+	margin-left:20%;
+	text-align: right;
+	color:#fff;
+}
+
+.dont_have_acc a{
+	font-size:1.3em;
+	font-weight: bold;
+	color:#fff;
+}
+
+.dont_have_acc a:hover{
+	color:rgba(192,192,192,1);
+}
+
+.input_area{
+	flex:4;
+	margin-left:8%;
+	margin-top:10%;
+}
+
+.input_area2{
+	flex:4;
+	margin-left:8%;
+	margin-top:5%;
+}
+
+.wel_txt{
+	font-size:2em;
+	font-weight:800;	
+	font-family:'FSM-B';
+}
+
+form input{
+	width:57%	;
+	height:55px;
+	border:1.1px solid rgba(112,112,112,0.4);
+	font-size: 1em;
+	padding-left:10px;
+	font-family: 'FSM-R';
+	min-width:250px;
+
+}
+
+select{
+	width:58.5%;
+	height:55px;
+	border:1.1px solid rgba(112,112,112,0.4);
+	font-size: 1em;
+	padding-left:10px;
+	font-family: 'FSM-R';
+	min-width:250px;	
+}
+
+select:required:invalid {
+  color:rgba(112,112,112,0.5);
+}
+
+option {
+  color:#000;
+}
+
+
+a{
+	text-decoration: none;
+}
+
+form a:hover{
+	text-decoration: underline;
+}
+
+input[name^="pass"]{
+	margin-top:-1px;
+}
+input[name^="name"]{
+	border-bottom: none;
+}
+
+
+::placeholder {
+	color:rgba(112,112,112,0.5);
+}
+
+::-ms-input-placeholder{ 
+	color:rgba(112,112,112,0.5);
+}
+
+.login_btn{
+	width:58.5%;
+	height:55px;
+	border:none;
+	background: linear-gradient(135deg, #6a11cb 10%, #2575fc 90%);
+	font-size:1.2em;
+	font-weight: bold;
+	color:#fff;
+	min-width:250px;
+	font-family:'FSM-B';
+}
+
+.login_btn:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+
+.quote , .quote2{
+	font-size:2.5em;
+	color:#fff;
+	margin-top:30%;
+	margin-left:15%;
+}
+
+
+blockquote {
+	font-family: 'FSM-B';
+    padding: 0.35em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #383838;
+}
+
+blockquote:before {
+    position: absolute;
+    font-size: 2.5em;
+    line-height: 1;
+    top: 0;
+    left: -20px;
+    content: "\201C";
+}
+
+blockquote:after {
+    position: absolute;
+    float:right;
+    font-size:2.5em;
+    line-height: 1;
+    bottom:-0.5em;
+    content: "\201D";
+}
+
+.quote2:after {
+    position: absolute;
+    float:right;
+	right:0;
+    font-size:2.5em;
+    line-height: 1;
+    bottom:-0.5em;
+    content: "\201D";
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+@media screen and (max-width:800px){
+	.wrap{
+		display: flex;
+		flex-direction: column;
+	}
+}
