@@ -1172,7 +1172,7 @@ def Signup():
 			contact_no=str(request.form["contact_no"])
 			gender=request.form["gender"]
 			otp=randint(100000,999999)
-			new_user=TempCompetitors(email=uname,passwd=passwd,name=name,roll_no=roll_no,college=institute,mob_no=contact_no,otp=otp)
+			new_user=TempCompetitors(email=uname,passwd=passwd,name=name,gender=gender[0],roll_no=roll_no,college=institute,mob_no=contact_no,otp=otp)
 			db.session.add(new_user)
 			db.session.commit()
 			msg=Message('FROM RANN-KIET',sender='rann@kiet.edu',recipients=[uname])
