@@ -1188,7 +1188,7 @@ def Signup():
 
 @app.route("/verify-otp/<string:email>",methods=["GET","POST"])
 def Verify_otp(email):
-	try:
+	# try:
 		if request.method=="POST":
 			otp=request.form["otp"]
 			ch_otp=TempCompetitors.query.filter_by(email=email).first()
@@ -1203,8 +1203,8 @@ def Verify_otp(email):
 				return render_template("errorpage.html",error="WRONG OTP")
 		else:
 			return render_template("errorpage.html",error="That Was WRONG")
-	except:
-		return render_template("errorpage.html",error="Some Error Occured")
+	# except:
+		# return render_template("errorpage.html",error="Some Error Occured")
 
 @app.route("/login/<string:redir>",methods=["GET","POST"])
 def Login(redir):
