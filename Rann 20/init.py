@@ -9,7 +9,7 @@ from data import eventdetailsEn
 from flask_migrate import Migrate
 
 app=Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:mom0511@localhost/Rann2020"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://rann2020:mom0511@localhost/Rann2020"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 db.app=app
