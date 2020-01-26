@@ -17,7 +17,7 @@ db.app=app
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT']=465
 app.config['MAIL_USERNAME']='rann@kiet.edu'
-app.config['MAIL_PASSWORD']='KIET12345'
+app.config['MAIL_PASSWORD']='RANN2K20'
 app.config['MAIL_USE_TLS']=False
 app.config['MAIL_USE_SSL']=True
 mail=Mail(app)
@@ -1158,7 +1158,7 @@ def Signuppage():
 
 @app.route("/signup",methods=["GET","POST"])
 def Signup():
-	# try:
+	try:
 		if request.method=="POST":
 			name=request.form["name"]
 			# father_name=request.form["father_name"]
@@ -1174,17 +1174,17 @@ def Signup():
 			otp=randint(100000,999999)
 			new_user=TempCompetitors(email=uname,passwd=passwd,name=name,gender=gender[0],roll_no=roll_no,college=institute,mob_no=contact_no,otp=otp)
 			db.session.add(new_user)
-			db.session.commit()
 			msg=Message('FROM RANN-KIET',sender='rann@kiet.edu',recipients=[uname])
 			msg.body="""Subject: Verification Otp
 						Your OTP For Verification of Email At Rann2020 Is
 						"""+str(otp)
 			mail.send(msg)
+			db.session.commit()
 			return render_template("verifypage.html",email=uname)
 		else:
 			return render_template("errorpage.html",error="THAT WAS WRONG!!!")
-	# except:
-		# return render_template("errorpage.html",error="Some Error Occured")
+	except:
+		return render_template("errorpage.html",error="Some Error Occured")
 
 @app.route("/verify-otp/<string:email>",methods=["GET","POST"])
 def Verify_otp(email):
