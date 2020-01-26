@@ -21,9 +21,17 @@
 				<div></div>
 				<div></div>
 				<div></div>
-				<a href="/loginpage/direct">
-					<button class="reg_btn">REGISTER</button>
-				</a>
+					{% if logged_in %}
+					<a href="/loginpage/direct">
+						<button class="reg_btn">REGISTER</button>
+					
+					</a>
+					{% else %}
+					<a href="/loginpage/direct">
+						<button class="reg_btn">REGISTER</button>
+					
+					</a>
+					{% endif %}
 			</div>
 		</nav>
 
