@@ -1158,7 +1158,7 @@ def Signuppage():
 
 @app.route("/signup",methods=["GET","POST"])
 def Signup():
-	# try:
+	try:
 		if request.method=="POST":
 			name=request.form["name"]
 			# father_name=request.form["father_name"]
@@ -1183,8 +1183,8 @@ def Signup():
 			return render_template("verifypage.html",email=uname)
 		else:
 			return render_template("errorpage.html",error="THAT WAS WRONG!!!")
-	# except:
-		# return render_template("errorpage.html",error="Some Error Occured")
+	except:
+		return render_template("errorpage.html",error="Some Error Occured")
 
 @app.route("/verify-otp/<string:email>",methods=["GET","POST"])
 def Verify_otp(email):
@@ -1193,7 +1193,7 @@ def Verify_otp(email):
 			otp=request.form["otp"]
 			ch_otp=TempCompetitors.query.filter_by(email=email).first()
 			if otp==ch_otp.otp:
-				new_user=Competitors(email=ch_otp.email,passwd=ch_otp.passwd,name=ch_otp.name,father_name=ch_otp.father_name,roll_no=ch_otp.roll_no,college=ch_otp.college,branch=ch_otp.branch,year=ch_otp.year,mob_no=ch_otp.mob_no,gender=ch_otp.gender)
+				new_user=Competitors(email=ch_otp.email,passwd=ch_otp.passwd,name=ch_otp.name,roll_no=ch_otp.roll_no,college=ch_otp.college,mob_no=ch_otp.mob_no,gender=ch_otp.gender)
 				db.session.add(new_user)
 				db.session.commit()
 				db.session.delete(ch_otp)
