@@ -95,6 +95,16 @@ def check_teamname():
 	elif event=="Fifa":
 		if Fifa.query.filter_by(team_name=team).count()>0:
 			results=["Yes"]
+	#new
+	elif event=="Karate":
+		if Karate.query.filter_by(team_name=team).count()>0:
+			results=["Yes"]
+	elif event=="Athletics":
+		if Athletics.query.filter_by(team_name=team).count()>0:
+			results=["Yes"]
+	elif event=="Yoga":
+		if Yoga.query.filter_by(team_name=team).count()>0:
+			results=["Yes"]
 	return jsonify(results)
 
 
@@ -197,6 +207,26 @@ def check_part():
 			if eventtype=="Single":
 				if "fifa" in mem.events_participated.split("-"):
 					results=["Yes"]
+	# new 2020
+	elif event=="Karate":
+		if Members.query.filter_by(aadhar=aadhar).count()>0:
+			mem=Members.query.filter_by(aadhar=aadhar).first()
+			if eventtype=="Single":
+				if "Karate" in mem.events_participated.split("-"):
+					results=["Yes"]
+	elif event=="Athletics":
+		if Members.query.filter_by(aadhar=aadhar).count()>0:
+			mem=Members.query.filter_by(aadhar=aadhar).first()
+			if eventtype=="Single":
+				if "Athletics" in mem.events_participated.split("-"):
+					results=["Yes"]
+	elif event=="Yoga":
+		if Members.query.filter_by(aadhar=aadhar).count()>0:
+			mem=Members.query.filter_by(aadhar=aadhar).first()
+			if eventtype=="Single":
+				if "Yoga" in mem.events_participated.split("-"):
+					results=["Yes"]
+	
 	return jsonify(results)
 
 
@@ -272,6 +302,19 @@ def User_Profile(path):
 						pid=173946
 						team=Carrom.query.filter_by(team_id=path[3]).first()
 						return redirect("https://www.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_19_QAZPLA&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+					#new 2020
+					elif path[1]=="Karate":
+						pid=173947
+						team=Karate.query.filter_by(team_id=path[3]).first()
+						return redirect("https://www.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_19_QAZPLA&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+					elif path[1]=="Athletics":
+						pid=173948
+						team=Athletics.query.filter_by(team_id=path[3]).first()
+						return redirect("https://www.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_19_QAZPLA&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+					elif path[1]=="Yoga":
+						pid=173949
+						team=Yoga.query.filter_by(team_id=path[3]).first()
+						return redirect("https://www.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_19_QAZPLA&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 				except:
 					return render_template("errorpage.html",error="Some Error Occured")
 
@@ -311,12 +354,12 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									member1_name=request.form["name1"]
 									aadhar_no1=request.form["aadhar_no1"]
 									food_lodge1=request.form["food_lodge1"]=="Yes"
 									if food_lodge1:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated=("pool"+eventtype))
 										db.session.add(new_user)
@@ -350,7 +393,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="poolS")
 										db.session.add(new_user)
@@ -377,7 +420,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="carrom")
 										db.session.add(new_user)
@@ -394,7 +437,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="carrom")
 											db.session.add(new_user)
@@ -423,7 +466,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="football")
 										db.session.add(new_user)
@@ -440,7 +483,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="football")
 											db.session.add(new_user)
@@ -460,7 +503,7 @@ def User_Profile(path):
 											aadhar=request.form["aadhar_no"+str(i)]
 											food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 											if food_lodge:
-												amt_paid+=600
+												amt_paid+=200
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="football")
 												db.session.add(new_user)
@@ -488,7 +531,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="volleyball")
 										db.session.add(new_user)
@@ -505,7 +548,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="volleyball")
 											db.session.add(new_user)
@@ -525,7 +568,7 @@ def User_Profile(path):
 											aadhar=request.form["aadhar_no"+str(i)]
 											food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 											if food_lodge:
-												amt_paid+=600
+												amt_paid+=200
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="volleyball")
 												db.session.add(new_user)
@@ -553,7 +596,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="cricket")
 										db.session.add(new_user)
@@ -570,7 +613,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="cricket")
 											db.session.add(new_user)
@@ -590,7 +633,7 @@ def User_Profile(path):
 											aadhar=request.form["aadhar_no"+str(i)]
 											food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 											if food_lodge:
-												amt_paid+=600
+												amt_paid+=200
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="cricket")
 												db.session.add(new_user)
@@ -618,7 +661,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="basketball")
 										db.session.add(new_user)
@@ -635,7 +678,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="basketball")
 											db.session.add(new_user)
@@ -655,7 +698,7 @@ def User_Profile(path):
 											aadhar=request.form["aadhar_no"+str(i)]
 											food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 											if food_lodge:
-												amt_paid+=600
+												amt_paid+=200
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="basketball")
 												db.session.add(new_user)
@@ -683,7 +726,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="chessS")
 										db.session.add(new_user)
@@ -707,7 +750,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="chessT")
 										db.session.add(new_user)
@@ -724,7 +767,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="chessT")
 											db.session.add(new_user)
@@ -752,12 +795,12 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									member1_name=request.form["name1"]
 									aadhar_no1=request.form["aadhar_no1"]
 									food_lodge1=request.form["food_lodge1"]=="Yes"
 									if food_lodge1:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated=("lawntennis"+eventtype))
 										db.session.add(new_user)
@@ -790,7 +833,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="lawntennisS")
 										db.session.add(new_user)
@@ -817,7 +860,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="badmintonT")
 										db.session.add(new_user)
@@ -834,7 +877,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="badmintonT")
 											db.session.add(new_user)
@@ -854,7 +897,7 @@ def User_Profile(path):
 											aadhar=request.form["aadhar_no"+str(i)]
 											food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 											if food_lodge:
-												amt_paid+=600
+												amt_paid+=200
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="badmintonT")
 												db.session.add(new_user)
@@ -881,12 +924,12 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									member1_name=request.form["name1"]
 									aadhar_no1=request.form["aadhar_no1"]
 									food_lodge1=request.form["food_lodge1"]=="Yes"
 									if food_lodge1:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="badminton")
 										db.session.add(new_user)
@@ -920,12 +963,12 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									member1_name=request.form["name1"]
 									aadhar_no1=request.form["aadhar_no1"]
 									food_lodge1=request.form["food_lodge1"]=="Yes"
 									if food_lodge1:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated=("tabletennis"+eventtype))
 										db.session.add(new_user)
@@ -958,7 +1001,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="tabletennis")
 										db.session.add(new_user)
@@ -982,7 +1025,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="tabletennisT")
 										db.session.add(new_user)
@@ -999,7 +1042,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="tabletennisT")
 											db.session.add(new_user)
@@ -1029,7 +1072,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="khokho")
 										db.session.add(new_user)
@@ -1046,7 +1089,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="khokho")
 											db.session.add(new_user)
@@ -1075,7 +1118,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="fifa")
 										db.session.add(new_user)
@@ -1100,7 +1143,7 @@ def User_Profile(path):
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
 									if food_lodge:
-										amt_paid+=600
+										amt_paid+=200
 									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
 										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="pubg")
 										db.session.add(new_user)
@@ -1117,7 +1160,7 @@ def User_Profile(path):
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
 										if food_lodge:
-											amt_paid+=600
+											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
 											new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="pubg")
 											db.session.add(new_user)
@@ -1135,6 +1178,81 @@ def User_Profile(path):
 									db.session.add(new_team)
 									db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Pubg.query.filter_by(captain_id=captain.c_id).first().team_id)
+									db.session.add(new_part)
+									db.session.commit()
+									return render_template("successpage.html",msg="REGISTERED")
+							elif eventname=="Karate":
+								if eventtype=="Single":
+									amt_paid=300
+									team_name=request.form["team_name"]
+									aadhar_no=request.form["aadhar_no"]
+									food_lodge=request.form["food_lodge"]=="Yes"
+									if food_lodge:
+										amt_paid+=200
+									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
+										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="Karate")
+										db.session.add(new_user)
+										#db.session.commit()
+									else:
+										mem=Members.query.filter_by(aadhar=aadhar_no).first()
+										if "Karate" in mem.events_participated.split("-"):
+											return str(mem.name)+" Participated In This Event"
+										mem.events_participated=mem.events_participated+"-Karate"
+									member1=Members.query.filter_by(aadhar=aadhar_no).first()
+									new_team=Karate(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True)
+									db.session.add(new_team)
+									#db.session.commit()
+									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Karate.query.filter_by(captain_id=captain.c_id).first().team_id)
+									db.session.add(new_part)
+									db.session.commit()
+									return render_template("successpage.html",msg="REGISTERED")
+							elif eventname=="Athletics":
+								if eventtype=="Single":
+									amt_paid=200
+									team_name=request.form["team_name"]
+									aadhar_no=request.form["aadhar_no"]
+									food_lodge=request.form["food_lodge"]=="Yes"
+									if food_lodge:
+										amt_paid+=200
+									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
+										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="Athletics")
+										db.session.add(new_user)
+										#db.session.commit()
+									else:
+										mem=Members.query.filter_by(aadhar=aadhar_no).first()
+										if "Athletics" in mem.events_participated.split("-"):
+											return str(mem.name)+" Participated In This Event"
+										mem.events_participated=mem.events_participated+"-Athletics"
+									member1=Members.query.filter_by(aadhar=aadhar_no).first()
+									new_team=Chess(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True)
+									db.session.add(new_team)
+									#db.session.commit()
+									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Athletics.query.filter_by(captain_id=captain.c_id).first().team_id)
+									db.session.add(new_part)
+									db.session.commit()
+									return render_template("successpage.html",msg="REGISTERED")
+							elif eventname=="Yoga":
+								if eventtype=="Single":
+									amt_paid=200
+									team_name=request.form["team_name"]
+									aadhar_no=request.form["aadhar_no"]
+									food_lodge=request.form["food_lodge"]=="Yes"
+									if food_lodge:
+										amt_paid+=200
+									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
+										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="Yoga")
+										db.session.add(new_user)
+										#db.session.commit()
+									else:
+										mem=Members.query.filter_by(aadhar=aadhar_no).first()
+										if "Yoga" in mem.events_participated.split("-"):
+											return str(mem.name)+" Participated In This Event"
+										mem.events_participated=mem.events_participated+"-Yoga"
+									member1=Members.query.filter_by(aadhar=aadhar_no).first()
+									new_team=Chess(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True)
+									db.session.add(new_team)
+									#db.session.commit()
+									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Yoga.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
@@ -1876,6 +1994,33 @@ def verify_payment():
 					return render_template("errorpage.html",error="Amount Paid Is Invalid")
 			elif event_id_c==173946:
 				team=Carrom.query.filter_by(team_id=team_id_c).first()
+				if team.amt_paid == int(float(webdict["TXNAMOUNT"])):
+					team.transaction_id=webdict["ORDERID"]
+					team.payment=True
+					db.session.commit()
+					return render_template("successpage.html",msg=webdict["RESPMSG"])
+				else:
+					return render_template("errorpage.html",error="Amount Paid Is Invalid")
+			elif event_id_c==173947:
+				team=Karate.query.filter_by(team_id=team_id_c).first()
+				if team.amt_paid == int(float(webdict["TXNAMOUNT"])):
+					team.transaction_id=webdict["ORDERID"]
+					team.payment=True
+					db.session.commit()
+					return render_template("successpage.html",msg=webdict["RESPMSG"])
+				else:
+					return render_template("errorpage.html",error="Amount Paid Is Invalid")
+			elif event_id_c==173948:
+				team=Athletics.query.filter_by(team_id=team_id_c).first()
+				if team.amt_paid == int(float(webdict["TXNAMOUNT"])):
+					team.transaction_id=webdict["ORDERID"]
+					team.payment=True
+					db.session.commit()
+					return render_template("successpage.html",msg=webdict["RESPMSG"])
+				else:
+					return render_template("errorpage.html",error="Amount Paid Is Invalid")
+			elif event_id_c==173949:
+				team=Yoga.query.filter_by(team_id=team_id_c).first()
 				if team.amt_paid == int(float(webdict["TXNAMOUNT"])):
 					team.transaction_id=webdict["ORDERID"]
 					team.payment=True
