@@ -62,7 +62,7 @@
 
 	<div class="nav_right">
 		<a href="/loginpage/direct" >
-			<button class="reg_btn reg_btn_border">REGISTER</button>
+			<button class="reg_btn reg_btn_border">LOGIN</button>
 		</a>
 	</div>
 </nav>
@@ -74,36 +74,15 @@
 <div class="btns">
 	
 	<!-- jinja loop starts -->
-	<a href="#">
-		<button class="cat_btn">{{cat.name}}</button>
+	{% for i in types.split("-") %}
+	<a href="register-teamDetails-{{i}}-{{eventname}}">
+		<button class="cat_btn">{{i}}</button>
 	</a>
-	<a href="#">
-		<button class="cat_btn">{{cat.name}}</button>
-	</a>
-	<a href="#">
-		<button class="cat_btn">{{cat.name}}</button>
-	</a>
+	
+	{% endfor %}
 	
 	<!-- jinja loop ends -->
 
 </div>
-
-
-<!-- Rann'19 Website code -->
-
-<!-- 	{% if types.split("-")|length == 2 %}
-  	{% set col="col-sm-6" %}
-  	{% else %}
-  	{% set col="col-sm-4" %}
-  	{% endif %}
-  {% for i in types.split("-") %}
-
-    <div class={{col}} > 
-      <button><a href="register-teamDetails-{{i}}-{{eventname}}">{{i}}</a></button>
-    </div>
-    
-{% endfor %}
- -->
-
 </body>
 </html>

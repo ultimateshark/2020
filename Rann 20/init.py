@@ -235,7 +235,7 @@ def check_part():
 @app.route("/user/<string:path>",methods=["GET","POST"])
 def User_Profile(path):
 	try:
-		return render_template('main.html',logged_in=True)
+		# return render_template('main.html',logged_in=True)
 		if session["logged_in"]:
 			client_email=session["username"]
 			client_data=Competitors.query.filter_by(email=client_email).first()
