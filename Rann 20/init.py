@@ -1262,8 +1262,8 @@ def User_Profile(path):
 						return str(e)
 		else:
 			return redirect(url_for("Loginpage"))
-	except Exception as e:
-		return render_template("errorpage.html",error="Some Error Occured")
+	# except Exception as e:
+		# return render_template("errorpage.html",error="Some Error Occured")
 
 
 @app.route("/loginpage/<string:redir>")
@@ -1302,8 +1302,8 @@ def Signup():
 			return render_template("verifypage.html",email=uname)
 		else:
 			return render_template("errorpage.html",error="THAT WAS WRONG!!!")
-	# except:
-		# return render_template("errorpage.html",error="Some Error Occured")
+	except:
+		return render_template("errorpage.html",error="Some Error Occured")
 
 @app.route("/verify-otp/<string:email>",methods=["GET","POST"])
 def Verify_otp(email):
