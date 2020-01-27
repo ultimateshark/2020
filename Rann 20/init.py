@@ -246,7 +246,7 @@ def User_Profile(path):
 					events_participated=Participation.query.filter_by(captain_id=client_data.c_id).all()
 					for reg_event in events_participated:
 						event_list+=[Events.query.filter_by(event_id=reg_event.event_id).first().name]
-				return render_template("userpage.html",userdata=client_data,event_list=event_list)
+				return render_template("main.html",userdata=client_data,event_list=event_list)
 			#payment changes
 			elif path[0]=="makepayment":
 				try:
