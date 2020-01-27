@@ -3,13 +3,107 @@
 <head>
 	<title>Rann'20 | Intercollege Sports Events - KIET</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="stylesheet" href="../static/css/home.css">
 	<link rel="stylesheet" href="../static/css/nav.css">
 	<link rel="stylesheet" href="../static/css/font.css">
+
+<style>
+	
+.cat_btn{
+	/*background-color: #192965;*/
+	background: linear-gradient(135deg, #6a11cb 10%, #2575fc 90%);
+	color:#fff;
+	border:none;
+	font-size:1.4em;
+	padding:10px 45px;
+	border-radius:8px;
+}
+
+.cat_btn:hover{
+	cursor: pointer;
+	box-shadow:5px 5px 4px 3px rgba(0,0,0,0.2);
+	transform:translate(-2px,-2px);
+	transition:0.3s;
+	border-radius:20px;
+}
+
+.btns{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width:60%;
+	margin:0 auto;
+	margin-top:7%;
+}
+
+.game_name{
+	font-size:2em;
+	font-family:'FSM-B';
+	text-align: center;
+	margin-top:5%;
+}
+
+.heading{
+	font-size:1.5em;
+	font-family:'FSM-B';
+	text-align: center;
+	margin-top:3%;
+}
+
+
+</style>
+
 </head>
 <body>
 
+<nav class="nav_border">
+	<div class="logo">
+		<img src="../static/img/logo_b.png" class="logo_img" alt="rann_logo"/>
+	</div>
 
+	<div class="nav_right">
+		<a href="/loginpage/direct" >
+			<button class="reg_btn reg_btn_border">REGISTER</button>
+		</a>
+	</div>
+</nav>
+
+<div class="game_name">{{event.name.upper()}}</div>
+
+<div class="heading">SELECT A CATEGORY</div>
+
+<div class="btns">
+	
+	<!-- jinja loop starts -->
+	<a href="#">
+		<button class="cat_btn">{{cat.name}}</button>
+	</a>
+	<a href="#">
+		<button class="cat_btn">{{cat.name}}</button>
+	</a>
+	<a href="#">
+		<button class="cat_btn">{{cat.name}}</button>
+	</a>
+	
+	<!-- jinja loop ends -->
+
+</div>
+
+
+<!-- Rann'19 Website code -->
+
+<!-- 	{% if types.split("-")|length == 2 %}
+  	{% set col="col-sm-6" %}
+  	{% else %}
+  	{% set col="col-sm-4" %}
+  	{% endif %}
+  {% for i in types.split("-") %}
+
+    <div class={{col}} > 
+      <button><a href="register-teamDetails-{{i}}-{{eventname}}">{{i}}</a></button>
+    </div>
+    
+{% endfor %}
+ -->
 
 </body>
 </html>
