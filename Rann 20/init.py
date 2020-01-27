@@ -349,7 +349,7 @@ def User_Profile(path):
 							eventdetails=Events.query.filter_by(name=eventname).first()
 							if eventname=="Pool":
 								if eventtype=="Double" or eventtype=="MixedDouble":
-									amt_paid=400
+									amt_paid=600
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -388,7 +388,7 @@ def User_Profile(path):
 									#flash("REGISTERED")
 									return render_template("successpage.html",msg="REGISTERED")
 								elif eventtype=="Single":
-									amt_paid=200
+									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -415,7 +415,7 @@ def User_Profile(path):
 									return render_template("errorpage.html",error="Some Error Occured")
 							elif eventname=="Carrom":
 								if eventtype=="TeamEvent":
-									amt_paid=1000
+									amt_paid=1500
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -452,6 +452,26 @@ def User_Profile(path):
 									db.session.commit()
 									for i in range(1,5):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
+									for i in range(5,7):
+										if len(request.form["aadhar_no"+str(i)])>0:
+											name=request.form["name"+str(i)]
+											aadhar=request.form["aadhar_no"+str(i)]
+											food_lodge=request.form["food_lodge"+str(i)]=="Yes"
+											if food_lodge:
+												amt_paid+=200
+											if Members.query.filter_by(aadhar=aadhar).count()==0:
+												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="carrom")
+												db.session.add(new_user)
+												db.session.commit()
+											else:
+												mem=Members.query.filter_by(aadhar=aadhar).first()
+												if "carrom" in mem.events_participated.split("-"):
+													return str(mem.name)+" Participated In This Event"
+												mem.events_participated=mem.events_participated+"-carrom"
+												db.session.commit()
+											memId[str(i)]=Members.query.filter_by(aadhar=aadhar).first().m_id
+										else:
+											memId[str(i)]=None
 									new_team=Carrom(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"])
 									db.session.add(new_team)
 									#db.session.commit()
@@ -461,7 +481,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Football":
 								if eventtype=="TeamEvent":
-									amt_paid=3500 if captain.gender=="M" else 1500
+									amt_paid=3000# if captain.gender=="M" else 1500
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -497,7 +517,7 @@ def User_Profile(path):
 									db.session.commit()
 									for i in range(1,13):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
-									for i in range(13,15):
+									for i in range(13,16):
 										if len(request.form["aadhar_no"+str(i)])>0:
 											name=request.form["name"+str(i)]
 											aadhar=request.form["aadhar_no"+str(i)]
@@ -526,7 +546,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Volleyball":
 								if eventtype=="TeamEvent":
-									amt_paid=2500
+									amt_paid=3000
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -543,7 +563,7 @@ def User_Profile(path):
 										mem.events_participated=mem.events_participated+"-volleyball"
 									memId={}
 									aadhar_no_check={}
-									for i in range(1,8):
+									for i in range(1,6):
 										name=request.form["name"+str(i)]
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
@@ -560,9 +580,9 @@ def User_Profile(path):
 											mem.events_participated=mem.events_participated+"-volleyball"
 										aadhar_no_check[str(i)]=aadhar
 									db.session.commit()
-									for i in range(1,8):
+									for i in range(1,6):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
-									for i in range(8,12):
+									for i in range(6,12):
 										if len(request.form["aadhar_no"+str(i)])>0:
 											name=request.form["name"+str(i)]
 											aadhar=request.form["aadhar_no"+str(i)]
@@ -591,7 +611,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Cricket":
 								if eventtype=="TeamEvent":
-									amt_paid=3500
+									amt_paid=3000
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -608,7 +628,7 @@ def User_Profile(path):
 										mem.events_participated=mem.events_participated+"-cricket"
 									memId={}
 									aadhar_no_check={}
-									for i in range(1,13):
+									for i in range(1,12):
 										name=request.form["name"+str(i)]
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
@@ -625,9 +645,9 @@ def User_Profile(path):
 											mem.events_participated=mem.events_participated+"-cricket"
 										aadhar_no_check[str(i)]=aadhar
 									db.session.commit()
-									for i in range(1,13):
+									for i in range(1,12):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
-									for i in range(13,15):
+									for i in range(12,15):
 										if len(request.form["aadhar_no"+str(i)])>0:
 											name=request.form["name"+str(i)]
 											aadhar=request.form["aadhar_no"+str(i)]
@@ -656,7 +676,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Basketball":
 								if eventtype=="TeamEvent":
-									amt_paid=2500
+									amt_paid=3000
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -673,7 +693,7 @@ def User_Profile(path):
 										mem.events_participated=mem.events_participated+"-basketball"
 									memId={}
 									aadhar_no_check={}
-									for i in range(1,8):
+									for i in range(1,5):
 										name=request.form["name"+str(i)]
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
@@ -690,9 +710,9 @@ def User_Profile(path):
 											mem.events_participated=mem.events_participated+"-basketball"
 										aadhar_no_check[str(i)]=aadhar
 									db.session.commit()
-									for i in range(1,8):
+									for i in range(1,5):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
-									for i in range(8,12):
+									for i in range(5,12):
 										if len(request.form["aadhar_no"+str(i)])>0:
 											name=request.form["name"+str(i)]
 											aadhar=request.form["aadhar_no"+str(i)]
@@ -721,7 +741,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Chess":
 								if eventtype=="Single":
-									amt_paid=200
+									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -745,7 +765,7 @@ def User_Profile(path):
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
 								elif eventtype=="TeamEvent":
-									amt_paid=1000
+									amt_paid=1200
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -789,46 +809,46 @@ def User_Profile(path):
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Lawntennis":
-								if eventtype=="Double" or eventtype=="MixedDouble":
-									amt_paid=500
-									team_name=request.form["team_name"]
-									aadhar_no=request.form["aadhar_no"]
-									food_lodge=request.form["food_lodge"]=="Yes"
-									if food_lodge:
-										amt_paid+=200
-									member1_name=request.form["name1"]
-									aadhar_no1=request.form["aadhar_no1"]
-									food_lodge1=request.form["food_lodge1"]=="Yes"
-									if food_lodge1:
-										amt_paid+=200
-									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
-										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated=("lawntennis"+eventtype))
-										db.session.add(new_user)
-										#db.session.commit()
-									else:
-										mem=Members.query.filter_by(aadhar=aadhar_no).first()
-										if ("lawntennis"+eventtype) in mem.events_participated.split("-"):
-											return str(mem.name)+" Participated In This Event"
-										mem.events_participated=mem.events_participated+("-lawntennis"+eventtype)
-									if Members.query.filter_by(aadhar=aadhar_no1).count()==0:
-										new_user=Members(name=member1_name,aadhar=aadhar_no1,captain_id=captain.c_id,food_lodge=food_lodge1,events_participated=("lawntennis"+eventtype))
-										db.session.add(new_user)
-										#db.session.commit()
-									else:
-										mem=Members.query.filter_by(aadhar=aadhar_no1).first()
-										if ("lawntennis"+eventtype) in mem.events_participated.split("-"):
-											return str(mem.name)+" Participated In This Event"
-										mem.events_participated=mem.events_participated+("-lawntennis"+eventtype)
-									member1=Members.query.filter_by(aadhar=aadhar_no1).first()
-									new_team=Lawntennis(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True,member1_id=member1.m_id)
-									db.session.add(new_team)
-									#db.session.commit()
-									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Lawntennis.query.filter_by(captain_id=captain.c_id).first().team_id)
-									db.session.add(new_part)
-									db.session.commit()
-									return render_template("successpage.html",msg="REGISTERED")
-								elif eventtype=="Single":
-									amt_paid=250
+								# if eventtype=="Double" or eventtype=="MixedDouble":
+								# 	amt_paid=500
+								# 	team_name=request.form["team_name"]
+								# 	aadhar_no=request.form["aadhar_no"]
+								# 	food_lodge=request.form["food_lodge"]=="Yes"
+								# 	if food_lodge:
+								# 		amt_paid+=200
+								# 	member1_name=request.form["name1"]
+								# 	aadhar_no1=request.form["aadhar_no1"]
+								# 	food_lodge1=request.form["food_lodge1"]=="Yes"
+								# 	if food_lodge1:
+								# 		amt_paid+=200
+								# 	if Members.query.filter_by(aadhar=aadhar_no).count()==0:
+								# 		new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated=("lawntennis"+eventtype))
+								# 		db.session.add(new_user)
+								# 		#db.session.commit()
+								# 	else:
+								# 		mem=Members.query.filter_by(aadhar=aadhar_no).first()
+								# 		if ("lawntennis"+eventtype) in mem.events_participated.split("-"):
+								# 			return str(mem.name)+" Participated In This Event"
+								# 		mem.events_participated=mem.events_participated+("-lawntennis"+eventtype)
+								# 	if Members.query.filter_by(aadhar=aadhar_no1).count()==0:
+								# 		new_user=Members(name=member1_name,aadhar=aadhar_no1,captain_id=captain.c_id,food_lodge=food_lodge1,events_participated=("lawntennis"+eventtype))
+								# 		db.session.add(new_user)
+								# 		#db.session.commit()
+								# 	else:
+								# 		mem=Members.query.filter_by(aadhar=aadhar_no1).first()
+								# 		if ("lawntennis"+eventtype) in mem.events_participated.split("-"):
+								# 			return str(mem.name)+" Participated In This Event"
+								# 		mem.events_participated=mem.events_participated+("-lawntennis"+eventtype)
+								# 	member1=Members.query.filter_by(aadhar=aadhar_no1).first()
+								# 	new_team=Lawntennis(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True,member1_id=member1.m_id)
+								# 	db.session.add(new_team)
+								# 	#db.session.commit()
+								# 	new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Lawntennis.query.filter_by(captain_id=captain.c_id).first().team_id)
+								# 	db.session.add(new_part)
+								# 	db.session.commit()
+								# 	return render_template("successpage.html",msg="REGISTERED")
+								if eventtype=="Single":
+									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -855,7 +875,7 @@ def User_Profile(path):
 									return render_template("errorpage.html",error="Some Error Occured")
 							elif eventname=="Badminton":
 								if eventtype=="TeamEvent":
-									amt_paid=1200 if captain.gender=="M" else 1000
+									amt_paid=2000 if captain.gender=="M" else 1000
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -872,7 +892,7 @@ def User_Profile(path):
 										mem.events_participated=mem.events_participated+"-badmintonT"
 									memId={}
 									aadhar_no_check={}
-									for i in range(1,3):
+									for i in range(1,2):
 										name=request.form["name"+str(i)]
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
@@ -889,9 +909,9 @@ def User_Profile(path):
 											mem.events_participated=mem.events_participated+"-badmintonT"
 										aadhar_no_check[str(i)]=aadhar
 									db.session.commit()
-									for i in range(1,3):
+									for i in range(1,2):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
-									for i in range(3,7):
+									for i in range(2,7):
 										if len(request.form["aadhar_no"+str(i)])>0:
 											name=request.form["name"+str(i)]
 											aadhar=request.form["aadhar_no"+str(i)]
@@ -957,46 +977,46 @@ def User_Profile(path):
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Tabletennis":
-								if eventtype=="Double":
-									amt_paid=500
-									team_name=request.form["team_name"]
-									aadhar_no=request.form["aadhar_no"]
-									food_lodge=request.form["food_lodge"]=="Yes"
-									if food_lodge:
-										amt_paid+=200
-									member1_name=request.form["name1"]
-									aadhar_no1=request.form["aadhar_no1"]
-									food_lodge1=request.form["food_lodge1"]=="Yes"
-									if food_lodge1:
-										amt_paid+=200
-									if Members.query.filter_by(aadhar=aadhar_no).count()==0:
-										new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated=("tabletennis"+eventtype))
-										db.session.add(new_user)
-										#db.session.commit()
-									else:
-										mem=Members.query.filter_by(aadhar=aadhar_no).first()
-										if ("tabletennis"+eventtype) in mem.events_participated.split("-"):
-											return str(mem.name)+" Participated In This Event"
-										mem.events_participated=mem.events_participated+("-tabletennis"+eventtype)
-									if Members.query.filter_by(aadhar=aadhar_no1).count()==0:
-										new_user=Members(name=member1_name,aadhar=aadhar_no1,captain_id=captain.c_id,food_lodge=food_lodge1,events_participated=("tabletennis"+eventtype))
-										db.session.add(new_user)
-										#db.session.commit()
-									else:
-										mem=Members.query.filter_by(aadhar=aadhar_no1).first()
-										if ("tabletennis"+eventtype) in mem.events_participated.split("-"):
-											return str(mem.name)+" Participated In This Event"
-										mem.events_participated=mem.events_participated+("-tabletennis"+eventtype)
-									member1=Members.query.filter_by(aadhar=aadhar_no1).first()
-									new_team=Tabletennis(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True,member1_id=member1.m_id)
-									db.session.add(new_team)
-									#db.session.commit()
-									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Tabletennis.query.filter_by(captain_id=captain.c_id).first().team_id)
-									db.session.add(new_part)
-									db.session.commit()
-									return render_template("successpage.html",msg="REGISTERED")
-								elif eventtype=="Single":
-									amt_paid=250
+								# if eventtype=="Double":
+								# 	amt_paid=500
+								# 	team_name=request.form["team_name"]
+								# 	aadhar_no=request.form["aadhar_no"]
+								# 	food_lodge=request.form["food_lodge"]=="Yes"
+								# 	if food_lodge:
+								# 		amt_paid+=200
+								# 	member1_name=request.form["name1"]
+								# 	aadhar_no1=request.form["aadhar_no1"]
+								# 	food_lodge1=request.form["food_lodge1"]=="Yes"
+								# 	if food_lodge1:
+								# 		amt_paid+=200
+								# 	if Members.query.filter_by(aadhar=aadhar_no).count()==0:
+								# 		new_user=Members(name=captain.name,aadhar=aadhar_no,captain_id=captain.c_id,food_lodge=food_lodge,events_participated=("tabletennis"+eventtype))
+								# 		db.session.add(new_user)
+								# 		#db.session.commit()
+								# 	else:
+								# 		mem=Members.query.filter_by(aadhar=aadhar_no).first()
+								# 		if ("tabletennis"+eventtype) in mem.events_participated.split("-"):
+								# 			return str(mem.name)+" Participated In This Event"
+								# 		mem.events_participated=mem.events_participated+("-tabletennis"+eventtype)
+								# 	if Members.query.filter_by(aadhar=aadhar_no1).count()==0:
+								# 		new_user=Members(name=member1_name,aadhar=aadhar_no1,captain_id=captain.c_id,food_lodge=food_lodge1,events_participated=("tabletennis"+eventtype))
+								# 		db.session.add(new_user)
+								# 		#db.session.commit()
+								# 	else:
+								# 		mem=Members.query.filter_by(aadhar=aadhar_no1).first()
+								# 		if ("tabletennis"+eventtype) in mem.events_participated.split("-"):
+								# 			return str(mem.name)+" Participated In This Event"
+								# 		mem.events_participated=mem.events_participated+("-tabletennis"+eventtype)
+								# 	member1=Members.query.filter_by(aadhar=aadhar_no1).first()
+								# 	new_team=Tabletennis(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True,member1_id=member1.m_id)
+								# 	db.session.add(new_team)
+								# 	#db.session.commit()
+								# 	new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Tabletennis.query.filter_by(captain_id=captain.c_id).first().team_id)
+								# 	db.session.add(new_part)
+								# 	db.session.commit()
+								# 	return render_template("successpage.html",msg="REGISTERED")
+								if eventtype=="Single":
+									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -1020,7 +1040,7 @@ def User_Profile(path):
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
 								elif eventtype=="TeamEvent":
-									amt_paid=1000
+									amt_paid=1200
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -1138,7 +1158,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Pubg":
 								if eventtype=="TeamEvent":
-									amt_paid=200
+									amt_paid=100
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -1159,6 +1179,7 @@ def User_Profile(path):
 										name=request.form["name"+str(i)]
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
+										amt_paid+=100
 										if food_lodge:
 											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
@@ -1208,7 +1229,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Athletics":
 								if eventtype=="Single":
-									amt_paid=200
+									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -1233,7 +1254,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Yoga":
 								if eventtype=="Single":
-									amt_paid=200
+									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
