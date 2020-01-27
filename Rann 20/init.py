@@ -234,7 +234,7 @@ def check_part():
 
 @app.route("/user/<string:path>",methods=["GET","POST"])
 def User_Profile(path):
-	try:
+	# try:
 		# return render_template('main.html',logged_in=True)
 		if session["logged_in"]:
 			client_email=session["username"]
@@ -1302,8 +1302,8 @@ def Signup():
 			return render_template("verifypage.html",email=uname)
 		else:
 			return render_template("errorpage.html",error="THAT WAS WRONG!!!")
-	except:
-		return render_template("errorpage.html",error="Some Error Occured")
+	# except:
+		# return render_template("errorpage.html",error="Some Error Occured")
 
 @app.route("/verify-otp/<string:email>",methods=["GET","POST"])
 def Verify_otp(email):
