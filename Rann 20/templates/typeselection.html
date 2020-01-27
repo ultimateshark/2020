@@ -61,9 +61,17 @@
 	</div>
 
 	<div class="nav_right">
-		<a href="/loginpage/direct" >
-			<button class="reg_btn reg_btn_border">LOGIN</button>
-		</a>
+		{% if logged_in %}
+					<a href="/logout">
+						<button class="reg_btn">LOGOUT</button>
+					
+					</a>
+					{% else %}
+					<a href="/loginpage/direct">
+						<button class="reg_btn">LOGIN</button>
+					
+					</a>
+					{% endif %}
 	</div>
 </nav>
 

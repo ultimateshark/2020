@@ -324,7 +324,7 @@ def User_Profile(path):
 					if len(types.split("-"))==1:
 						return redirect("/user/register-teamDetails-TeamEvent-"+path[2])
 					else:
-						return render_template("typeselection.html",types=types,eventname=path[2])
+						return render_template("typeselection.html",types=types,eventname=path[2],logged_in=True)
 				elif path[1]=="teamDetails":
 					captain=Competitors.query.filter_by(email=client_email).first()
 					if path[2]=="Single":
@@ -339,7 +339,7 @@ def User_Profile(path):
 							members=Events.query.filter_by(name=path[3]).first()
 							max_participants=members.max_participants-1
 							min_participants=members.min_participants-1
-						return render_template("teamDetails.html",captain=captain,members=max_participants,min_members=min_participants,eventtype=path[2],eventname=path[3])
+						return render_template("teamDetails.html",captain=captain,members=max_participants,min_members=min_participants,eventtype=path[2],eventname=path[3],logged_in=True)
 				elif path[1]=="teaminfo":
 					try:
 						captain=Competitors.query.filter_by(email=client_email).first()
