@@ -30,8 +30,8 @@
 		<!-- <div></div>
 		<div></div>
 		<div></div> -->
-		<a href="/loginpage/direct" >
-			<button class="reg_btn reg_btn_border">REGISTER</button>
+		<a href="#" >
+			<button class="reg_btn reg_btn_border"></button>
 		</a>
 	</div>
 </nav>
@@ -44,7 +44,22 @@
 				<div class="sport_name">{{event.name.upper()}}</div>
 
 				<!-- categories loop starts ( men , women , team)-->
-				<div class="categories"></div>
+				<div class="categories">
+					 {% if participated_in|length >0 %}
+        <h4 align="center" style="margin-bottom: 2px;">Already Participated in</h4><br>
+              {% for i in participated_in %}
+              <div align="center" style="font-size: 1.1em;">{{i.team_type}} 
+                  <button class="pay_btn">
+                    {% if not i.payment %}
+                     <a href="/user/makepayment-{{event.name}}-{{i.team_type}}-{{i.team_id}}"> Pay:{{i.amt_paid}} </a>
+                    {% else %}
+                      Paid
+                    {% endif %}
+                  </button> 
+              </div>
+              {% endfor %}
+        {% endif %}
+				</div>
 				<!-- categories loop ends -->
 
 				<div class="pricing">
@@ -71,7 +86,7 @@
 	<div class="rule">
 		<div class="rule_btn_wrap">
 			<div class="heading">RULES</div>
-			<a href="#">
+			<a href="{{redir}}">
 				<button onclick="swal('Registrations opening soon')" class="game_reg_btn">Register</button>
 			</a>
 		</div>	
