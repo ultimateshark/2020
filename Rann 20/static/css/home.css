@@ -14,6 +14,28 @@ body{
 
 }
 
+::-webkit-scrollbar{
+	width:9px;
+	height:9px;
+	background-color:rgba(255,255,255,0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f94425;
+
+}
+
+.nav_link{
+	color:#fff;
+	text-decoration: none;
+	font-size:1.4em;
+	margin-right:20px;
+}
+
+a:hover{
+	cursor: pointer;
+}
+
 
 
 .main_bg{
@@ -127,7 +149,12 @@ body{
 
 .event_box_wrap {
   width: 23%;
-  float:left;
+  /*float:left;*/
+}
+
+.event_row1 , .event_row2 , .event_row3{
+	display: flex;
+	flex-direction: row;
 }
 
 .events{
@@ -182,7 +209,7 @@ a.event_box_wrap{
 }
 
 .chief_guest{
-	margin-top:37%;
+	margin-top:60px;
 	text-align: center;
 }
 
@@ -195,8 +222,17 @@ a.event_box_wrap{
 
 .guest_box_wrap {
   width:20%;
-  float:right;
+  /*float:right;*/
 }
+
+
+.guest_row1,.guest_row2{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+
 
 .guest_box{
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -204,6 +240,11 @@ a.event_box_wrap{
   margin-left:20px;
   margin-top:20px;
   overflow: hidden;
+}
+
+.guest_box2{
+	font-size:1.4em;
+	margin-left:10px;
 }
 
 .guest_box img{
@@ -219,7 +260,7 @@ a.event_box_wrap{
 
 .msg{
 	width:80%;
-	margin:auto;
+	margin:0 auto;
 }
 
 .dir_msg_wrap{
@@ -354,11 +395,9 @@ footer{
 	flex-direction: column-reverse;
 }
 
-.chief_guest{
-}
 
 .guest_box_wrap{
-	widows: 50%;
+	width: 50%;
 }
 
 }
@@ -378,20 +417,20 @@ footer{
 }
 
 .date{
-	margin-top:100px;
+	margin-top:60px;
 	font-size:3em;
 }
 
 .motto{
 	font-size:2em;
-	margin-top:-90px;
+	margin-top:-80px;
 }
 
-.top{
+/*.top{
 	padding-top: 100px !important;;
 	margin-top:50px;
 }
-
+*/
 .guest_box_wrap{
 	width:45%;
 }
@@ -412,6 +451,29 @@ footer .rann_logo{
 
 .logo_footer{
 	transform: scale(0.7);
+}
+
+.event_row1, .event_row2,.event_row3{
+	display: flex;
+	flex-direction: column;
+}
+
+.events_wrap{
+	margin:0 auto;
+}
+
+.guest_row1 , .guest_row2{
+	display: flex;
+	flex-direction: column;
+}
+
+.guest_box_wrap{
+	width:90%;
+}
+
+.many{
+	margin-top:30px;
+	padding-bottom:30px;
 }
 
 }

@@ -48,11 +48,19 @@ nav{
 }
 
 .logo_img_home{
-	height:120px;
+	height:170px;
+}
+
+
+@media screen and (max-width:600px){
+	.logo_img_home{
+		height:80px;
+	}
+
+	nav{
+		padding:10px 50px 10px 30px;
+	}
 }
 
 @media screen and (max-width:400px){
-	nav{
-		padding:10px 50px 10px 10px;
-	}
 }
