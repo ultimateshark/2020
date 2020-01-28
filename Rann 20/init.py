@@ -234,8 +234,8 @@ def check_part():
 
 @app.route("/user/<string:path>",methods=["GET","POST"])
 def User_Profile(path):
-	# try:
-		# return render_template('main.html',logged_in=True)
+	try:
+		return render_template('main.html',logged_in=True)
 		if session["logged_in"]:
 			client_email=session["username"]
 			client_data=Competitors.query.filter_by(email=client_email).first()
@@ -1283,8 +1283,8 @@ def User_Profile(path):
 						return str(e)
 		else:
 			return redirect(url_for("Loginpage"))
-	# except Exception as e:
-		# return render_template("errorpage.html",error="Some Error Occured")
+	except Exception as e:
+		return render_template("errorpage.html",error="Some Error Occured")
 
 
 @app.route("/loginpage/<string:redir>")
