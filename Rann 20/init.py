@@ -1245,7 +1245,7 @@ def User_Profile(path):
 											return str(mem.name)+" Participated In This Event"
 										mem.events_participated=mem.events_participated+"-Athletics"
 									member1=Members.query.filter_by(aadhar=aadhar_no).first()
-									new_team=Chess(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True)
+									new_team=Athletics(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True)
 									db.session.add(new_team)
 									#db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Athletics.query.filter_by(captain_id=captain.c_id).first().team_id)
@@ -1270,9 +1270,9 @@ def User_Profile(path):
 											return str(mem.name)+" Participated In This Event"
 										mem.events_participated=mem.events_participated+"-Yoga"
 									member1=Members.query.filter_by(aadhar=aadhar_no).first()
-									new_team=Chess(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True)
+									new_team=Yoga(team_name=team_name,amt_paid=amt_paid,payment=False,team_type=eventtype,captain_id=captain.c_id,noc=True)
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Yoga.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
