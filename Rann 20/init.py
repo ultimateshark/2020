@@ -1203,7 +1203,7 @@ def User_Profile(path):
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Karate":
-								if eventtype=="Single":
+								if eventtype=="TeamEvent":
 									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
@@ -1228,7 +1228,7 @@ def User_Profile(path):
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Athletics":
-								if eventtype=="Single":
+								if eventtype=="TeamEvent":
 									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
@@ -1253,7 +1253,7 @@ def User_Profile(path):
 									db.session.commit()
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Yoga":
-								if eventtype=="Single":
+								if eventtype=="TeamEvent":
 									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
