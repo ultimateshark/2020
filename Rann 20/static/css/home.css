@@ -67,9 +67,9 @@ a:hover{
 .rann_20{
 	-webkit-text-stroke-width:3px;
 	-webkit-text-stroke-color:rgba(255,255,255,0.1);
-	color:rgba(255,255,255,0	);
+	color:white;
 	/*color:transparent;*/
-	font-size:3.8em;
+	font-size:3.5em;
 	font-family:'Etna';
 	letter-spacing:5px;
 	text-align:center;
@@ -371,6 +371,7 @@ footer{
 @media screen and (max-width:800px){
 	.rann_20{
 		font-size:1.5em;
+		color: white
 	}
 
 	.main_bg{
