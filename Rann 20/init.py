@@ -253,68 +253,68 @@ def User_Profile(path):
 					if path[1]=="Pool":
 						pid=838280
 						team=Pool.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Cricket":
 						pid=789588
 						team=Cricket.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Football":
 						pid=678123
 						team=FootBall.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Khokho":
 						pid=771410
 						team=Khokho.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Volleyball":
 						pid=771417
 						team=VolleyBall.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Chess":
 						pid=789153
 						team=Chess.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Pubg":
 						pid=523984
 						team=Pubg.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Basketball":
 						pid=156987
 						team=BasketBall.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Tabletennis":
 						pid=624813
 						team=Tabletennis.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Lawntennis":
 						pid=852013
 						team=Lawntennis.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Fifa":
 						pid=852741
 						team=Fifa.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Badminton":
 						pid=205555
 						team=Badminton.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Carrom":
 						pid=173946
 						team=Carrom.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					#new 2020
 					elif path[1]=="Karate":
 						pid=173947
 						team=Karate.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Athletics":
 						pid=173948
 						team=Athletics.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 					elif path[1]=="Yoga":
 						pid=173949
 						team=Yoga.query.filter_by(team_id=path[3]).first()
-						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
+						return redirect("https://tech.kiet.edu/erp-apis/index.php/payment/do_transaction?APP_KEY=RANN_20_QBZPJA*&CUST_ID="+str(pid)+str(team.team_id)+"&TXN_AMOUNT="+str(team.amt_paid)+"&CALLBACK_URL=http://rann.kiet.edu/verify-payment")
 				except:
 					return render_template("errorpage.html",error="Some Error Occured")
 
