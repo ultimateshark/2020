@@ -1744,6 +1744,23 @@ def EnterDetailsOfEvents():
 	return "Done"
 
 
+@app.route("/manishpandey/enter-details-of-events/Rehne/Do/Tum/Update")
+def EnterDetailsOfEventsUpdate():
+	for k in eventdetailsEn.keys():
+		event=Events.query.filter_by(name=k).first()
+		if event: 
+			event.types=eventdetailsEn[k]["types"]
+			event.min_participants=eventdetailsEn[k]["min"]
+			event.max_participants=eventdetailsEn[k]["max"]
+			event.rules=eventdetailsEn[k]["rules"]
+			event.stu_co=eventdetailsEn[k]["stu_co"]
+			event.stu_co_contact=eventdetailsEn[k]["stu_co_contact"]
+			event.teach_co=eventdetailsEn[k]["teach_co"]
+			event.amount=eventdetailsEn[k]["amount"]
+	db.session.commit()
+	return "Done"
+
+
 #new Changes
 
 @app.route("/manishpandey/jaadu/<string:command>")
