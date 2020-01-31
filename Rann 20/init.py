@@ -1298,7 +1298,7 @@ def Signuppage():
 
 @app.route("/signup",methods=["GET","POST"])
 def Signup():
-	# try:
+	try:
 		if request.method=="POST":
 			name=request.form["name"]
 			# father_name=request.form["father_name"]
@@ -1323,8 +1323,8 @@ def Signup():
 			return render_template("verifypage.html",email=uname)
 		else:
 			return render_template("errorpage.html",error="THAT WAS WRONG!!!")
-	# except:
-		# return render_template("errorpage.html",error="Some Error Occured")
+	except:
+		return render_template("errorpage.html",error="Some Error Occured")
 
 @app.route("/verify-otp/<string:email>",methods=["GET","POST"])
 def Verify_otp(email):
