@@ -1797,7 +1797,7 @@ def AdminLogin():
 	try:
 		if session["logged_in"]:
 			if session["username"]=="manishpandey8858@gmail.com":
-				event_list=["Football","Basketball","Vollyball","Cricket","Khokho","Lawntennis","Tabletennis","Chess","Badminton","Carrom","Pool","Pubg","Fifa"]
+				event_list=["Yoga","Karate","Athletics","Football","Basketball","Vollyball","Cricket","Khokho","Lawntennis","Tabletennis","Chess","Badminton","Carrom","Pool","Pubg","Fifa"]
 				return render_template("selecteventadmin.html",authority=event_list)
 			else:
 				return "Not Authorised"
@@ -1888,6 +1888,24 @@ def Admin_Profile():
 				return render_template("printeventdetails.html",event_data=event_data,team_data=team_data,type=True,members=1,eventname=eventname)
 			elif eventname=="Basketball":
 				event_data=BasketBall.query.all()
+				for x in event_data:
+					team_data[x.captain_id]={}
+					team_data[x.captain_id]["cap_details"]=Competitors.query.filter_by(c_id=x.captain_id).first()
+				return render_template("printeventdetails.html",event_data=event_data,team_data=team_data,type=True,members=12,eventname=eventname)
+			elif eventname=="Yoga":
+				event_data=Yoga.query.all()
+				for x in event_data:
+					team_data[x.captain_id]={}
+					team_data[x.captain_id]["cap_details"]=Competitors.query.filter_by(c_id=x.captain_id).first()
+				return render_template("printeventdetails.html",event_data=event_data,team_data=team_data,type=True,members=12,eventname=eventname)
+			elif eventname=="Karate":
+				event_data=Karate.query.all()
+				for x in event_data:
+					team_data[x.captain_id]={}
+					team_data[x.captain_id]["cap_details"]=Competitors.query.filter_by(c_id=x.captain_id).first()
+				return render_template("printeventdetails.html",event_data=event_data,team_data=team_data,type=True,members=12,eventname=eventname)
+			elif eventname=="Athletics":
+				event_data=Athletics.query.all()
 				for x in event_data:
 					team_data[x.captain_id]={}
 					team_data[x.captain_id]["cap_details"]=Competitors.query.filter_by(c_id=x.captain_id).first()
