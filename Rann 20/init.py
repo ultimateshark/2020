@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for,request,session,flash,redirect,jsonify
+from flask import Flask,render_template,url_for,request,session,flash,redirect,jsonify,send_file
 from passlib.hash import sha256_crypt
 from dbmodels import *
 from functools import wraps
@@ -38,6 +38,15 @@ def Home():
 			return render_template("main.html")
 	except:
 		return render_template("main.html")
+
+
+@app.route("/rannbrochure")
+def Rannbrochure():
+	try:
+		return send_file('/home/ubuntu/2020/Rann 20/static/brochure.pdf', attachment_filename='ohhey.pdf')
+	except Exception as e:
+		return str(e)
+
 
 @app.route("/rann2k19/k/admins/loginpage")
 def AdminLoginpage():
@@ -1229,7 +1238,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Athletics":
 								if eventtype=="TeamEvent":
-									amt_paid=300
+									amt_paid=200
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
