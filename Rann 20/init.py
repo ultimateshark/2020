@@ -1349,7 +1349,8 @@ def Verify_otp(email):
 				db.session.commit()
 				return redirect("/loginpage/direct")
 			else:
-				return render_template("errorpage.html",error="WRONG OTP")
+				flash("WRONG OTP")
+				return render_template("verifypage.html",email=email)
 		else:
 			return render_template("errorpage.html",error="That Was WRONG")
 	except:
