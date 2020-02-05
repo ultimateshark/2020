@@ -1167,7 +1167,7 @@ def User_Profile(path):
 									return render_template("successpage.html",msg="REGISTERED")
 							elif eventname=="Pubg":
 								if eventtype=="TeamEvent":
-									amt_paid=100
+									amt_paid=50
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
 									food_lodge=request.form["food_lodge"]=="Yes"
@@ -1188,7 +1188,7 @@ def User_Profile(path):
 										name=request.form["name"+str(i)]
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
-										amt_paid+=100
+										amt_paid+=50
 										if food_lodge:
 											amt_paid+=200
 										if Members.query.filter_by(aadhar=aadhar).count()==0:
