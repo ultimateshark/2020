@@ -637,7 +637,7 @@ def User_Profile(path):
 										mem.events_participated=mem.events_participated+"-cricket"
 									memId={}
 									aadhar_no_check={}
-									for i in range(1,12):
+									for i in range(1,11):
 										name=request.form["name"+str(i)]
 										aadhar=request.form["aadhar_no"+str(i)]
 										food_lodge=request.form["food_lodge"+str(i)]=="Yes"
@@ -654,9 +654,9 @@ def User_Profile(path):
 											mem.events_participated=mem.events_participated+"-cricket"
 										aadhar_no_check[str(i)]=aadhar
 									db.session.commit()
-									for i in range(1,12):
+									for i in range(1,11):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
-									for i in range(12,15):
+									for i in range(11,15):
 										if len(request.form["aadhar_no"+str(i)])>0:
 											name=request.form["name"+str(i)]
 											aadhar=request.form["aadhar_no"+str(i)]
