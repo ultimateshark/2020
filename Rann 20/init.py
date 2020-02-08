@@ -856,7 +856,7 @@ def User_Profile(path):
 								# 	db.session.add(new_part)
 								# 	db.session.commit()
 								# 	return render_template("successpage.html",msg="REGISTERED")
-								if eventtype=="Single":
+								if eventtype=="TeamEvent":
 									amt_paid=300
 									team_name=request.form["team_name"]
 									aadhar_no=request.form["aadhar_no"]
