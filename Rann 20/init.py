@@ -330,7 +330,7 @@ def User_Profile(path):
 			elif path[0]=="register":
 				if path[1]=="typeselection":
 					types=Events.query.filter_by(name=path[2]).first().types
-					if len(types.split("-"))==1:
+					if len(types.split("-"))<=1:
 						return redirect("/user/register-teamDetails-TeamEvent-"+path[2])
 					else:
 						return render_template("typeselection.html",types=types,eventname=path[2],logged_in=True)
