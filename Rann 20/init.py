@@ -523,7 +523,7 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-football"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,13):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									for i in range(13,16):
@@ -536,19 +536,19 @@ def User_Profile(path):
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="football")
 												db.session.add(new_user)
-												db.session.commit()
+												# db.session.commit()
 											else:
 												mem=Members.query.filter_by(aadhar=aadhar).first()
 												if "football" in mem.events_participated.split("-"):
 													return str(mem.name)+" Participated In This Event"
 												mem.events_participated=mem.events_participated+"-football"
-												db.session.commit()
+												# db.session.commit()
 											memId[str(i)]=Members.query.filter_by(aadhar=aadhar).first().m_id
 										else:
 											memId[str(i)]=None
 									new_team=FootBall(team_name=team_name,amt_paid=amt_paid,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"],member5_id=memId["5"],member6_id=memId["6"],member7_id=memId["7"],member8_id=memId["8"],member9_id=memId["9"],member10_id=memId["10"],member11_id=memId["11"],member12_id=memId["12"],member13_id=memId["13"],member14_id=memId["14"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=FootBall.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -588,7 +588,7 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-volleyball"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,6):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									for i in range(6,12):
@@ -607,13 +607,13 @@ def User_Profile(path):
 												if "volleyball" in mem.events_participated.split("-"):
 													return str(mem.name)+" Participated In This Event"
 												mem.events_participated=mem.events_participated+"-volleyball"
-												db.session.commit()
+												# db.session.commit()
 											memId[str(i)]=Members.query.filter_by(aadhar=aadhar).first().m_id
 										else:
 											memId[str(i)]=None
 									new_team=VollyBall(team_name=team_name,amt_paid=amt_paid,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"],member5_id=memId["5"],member6_id=memId["6"],member7_id=memId["7"],member8_id=memId["8"],member9_id=memId["9"],member10_id=memId["10"],member11_id=memId["11"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=VollyBall.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -653,7 +653,7 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-cricket"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,11):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									for i in range(11,15):
@@ -666,19 +666,19 @@ def User_Profile(path):
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="cricket")
 												db.session.add(new_user)
-												db.session.commit()
+												# db.session.commit()
 											else:
 												mem=Members.query.filter_by(aadhar=aadhar).first()
 												if "cricket" in mem.events_participated.split("-"):
 													return str(mem.name)+" Participated In This Event"
 												mem.events_participated=mem.events_participated+"-cricket"
-												db.session.commit()
+												# db.session.commit()
 											memId[str(i)]=Members.query.filter_by(aadhar=aadhar).first().m_id
 										else:
 											memId[str(i)]=None
 									new_team=Cricket(team_name=team_name,amt_paid=amt_paid,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"],member5_id=memId["5"],member6_id=memId["6"],member7_id=memId["7"],member8_id=memId["8"],member9_id=memId["9"],member10_id=memId["10"],member11_id=memId["11"],member12_id=memId["12"],member13_id=memId["13"],member14_id=memId["14"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Cricket.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -718,7 +718,7 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-basketball"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,5):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									for i in range(5,12):
@@ -731,19 +731,19 @@ def User_Profile(path):
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="basketball")
 												db.session.add(new_user)
-												db.session.commit()
+												# db.session.commit()
 											else:
 												mem=Members.query.filter_by(aadhar=aadhar).first()
 												if "basketball" in mem.events_participated.split("-"):
 													return str(mem.name)+" Participated In This Event"
 												mem.events_participated=mem.events_participated+"-basketball"
-												db.session.commit()
+												# db.session.commit()
 											memId[str(i)]=Members.query.filter_by(aadhar=aadhar).first().m_id
 										else:
 											memId[str(i)]=None
 									new_team=BasketBall(team_name=team_name,amt_paid=amt_paid,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"],member5_id=memId["5"],member6_id=memId["6"],member7_id=memId["7"],member8_id=memId["8"],member9_id=memId["9"],member10_id=memId["10"],member11_id=memId["11"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=BasketBall.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -807,12 +807,12 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-chessT"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,5):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									new_team=Chess(team_name=team_name,amt_paid=amt_paid,team_type=eventtype,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Chess.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -917,7 +917,7 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-badmintonT"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,2):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									for i in range(2,7):
@@ -930,19 +930,19 @@ def User_Profile(path):
 											if Members.query.filter_by(aadhar=aadhar).count()==0:
 												new_user=Members(name=name,aadhar=aadhar,captain_id=captain.c_id,food_lodge=food_lodge,events_participated="badmintonT")
 												db.session.add(new_user)
-												db.session.commit()
+												# db.session.commit()
 											else:
 												mem=Members.query.filter_by(aadhar=aadhar).first()
 												if "badmintonT" in mem.events_participated.split("-"):
 													return str(mem.name)+" Participated In This Event"
 												mem.events_participated=mem.events_participated+"-badmintonT"
-												db.session.commit()
+												# db.session.commit()
 											memId[str(i)]=Members.query.filter_by(aadhar=aadhar).first().m_id
 										else:
 											memId[str(i)]=None
 									new_team=Badminton(team_name=team_name,amt_paid=amt_paid,team_type=eventtype,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"],member5_id=memId["5"],member6_id=memId["6"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Badminton.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -1082,12 +1082,12 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-tabletennisT"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,4):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									new_team=Tabletennis(team_name=team_name,amt_paid=amt_paid,team_type=eventtype,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Tabletennis.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -1129,12 +1129,12 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-khokho"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,12):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									new_team=Khokho(team_name=team_name,amt_paid=amt_paid,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"],member4_id=memId["4"],member5_id=memId["5"],member6_id=memId["6"],member7_id=memId["7"],member8_id=memId["8"],member9_id=memId["9"],member10_id=memId["10"],member11_id=memId["11"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Khokho.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
@@ -1201,12 +1201,12 @@ def User_Profile(path):
 												return str(mem.name)+" Participated In This Event"
 											mem.events_participated=mem.events_participated+"-pubg"
 										aadhar_no_check[str(i)]=aadhar
-									db.session.commit()
+									# db.session.commit()
 									for i in range(1,4):
 										memId[str(i)]=Members.query.filter_by(aadhar=aadhar_no_check[str(i)]).first().m_id
 									new_team=Pubg(team_name=team_name,amt_paid=amt_paid,payment=False,captain_id=captain.c_id,noc=True,member1_id=memId["1"],member2_id=memId["2"],member3_id=memId["3"])
 									db.session.add(new_team)
-									db.session.commit()
+									# db.session.commit()
 									new_part=Participation(captain_id=captain.c_id,event_id=Events.query.filter_by(name=path[3]).first().event_id,team_id=Pubg.query.filter_by(captain_id=captain.c_id).first().team_id)
 									db.session.add(new_part)
 									db.session.commit()
