@@ -28,6 +28,10 @@ migrate = Migrate(app, db)
 def sponsors():
 	return render_template("sponsors.html")
 
+@app.route("/commitee")
+def commitee():
+	return render_template("commitee.html")
+
 
 @app.route("/")
 def Home():
@@ -328,6 +332,7 @@ def User_Profile(path):
 					return render_template("errorpage.html",error="Some Error Occured")
 
 			elif path[0]=="register":
+				return render_template("errorpage.html",error="Sorry registration closed!!!") 
 				if path[1]=="typeselection":
 					types=Events.query.filter_by(name=path[2]).first().types
 					if len(types.split("-"))<=1:
